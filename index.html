@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172b27">
+  <title>A Small Journey — a Myanmar-inspired exploration game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="./" aria-label="A Small Journey home"><span class="brand-mark">✳</span> A SMALL JOURNEY</a>
+    <span class="edition">A MYANMAR-INSPIRED EXPLORATION GAME</span>
+    <button id="help" class="quiet">How to play <span aria-hidden="true">↗</span></button>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <div><p class="eyebrow">ONE TOWN. A FEW KIND PEOPLE. YOUR OWN PACE.</p><h1 id="title">Take the long way <em>home.</em></h1></div>
+      <p class="intro-copy">A bicycle, a little delivery, and a town worth getting to know.<br>There’s no hurry here.</p>
+    </section>
+    <div class="game-layout">
+      <section class="game" aria-label="Playable town">
+        <canvas id="world" tabindex="0" aria-label="Town exploration. Move with WASD or arrow keys. Press E to interact, M for the map, and Escape to pause.">This game needs a browser with canvas support.</canvas>
+        <div class="location"><span class="live-dot"></span><span id="location">Market street</span><small>A QUIET AFTERNOON</small></div>
+        <button id="map-button" class="map-button" aria-label="Open town map">⌖ <span>Town map</span><kbd>M</kbd></button>
+        <div id="interaction" class="interaction" hidden><kbd>E</kbd><span id="interaction-text">Talk</span></div>
+        <div id="welcome" class="welcome">
+          <p class="eyebrow">WELCOME TO YOUR LITTLE CORNER OF THE WORLD</p>
+          <h2>A small journey.<br>A good place to begin.</h2>
+          <p>Collect a parcel at the market. Meet your neighbors.<br>Find the tea shop by the river.</p>
+          <button id="start" class="primary">Let’s take a ride <span>→</span></button>
+          <small>WASD / ARROWS TO RIDE · E TO TALK</small>
+        </div>
+        <div id="pause-overlay" class="pause-overlay" hidden><h2>Taking a breath.</h2><p>Press Escape or use the button to keep riding.</p><button id="resume" class="primary">Continue journey →</button></div>
+        <div class="game-bottom"><span>✦ <span id="mood">A little kindness goes a long way.</span></span><span>FICTIONAL TOWN · EXPLORABLE PROTOTYPE</span></div>
+      </section>
+      <aside>
+        <section class="journal">
+          <p class="eyebrow">YOUR AFTERNOON</p><h2>A delivery & a detour</h2>
+          <p id="objective" class="objective" aria-live="polite"></p>
+          <ol id="tasks" class="tasks"></ol>
+          <div class="parcel"><span aria-hidden="true">▣</span><div><small>IN YOUR BASKET</small><p id="inventory">Room for a small adventure</p></div></div>
+        </section>
+        <section class="places"><div class="section-heading"><h3>Little discoveries</h3><span id="discovery-count">0 / 4</span></div><p>Every turn has a story.</p><ul id="discoveries"></ul></section>
+        <section class="controls"><h3>Find your own pace</h3><p><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / arrows</span> Ride</p><p><kbd>E</kbd> Talk / collect</p><p><kbd>M</kbd> Town map <kbd>Esc</kbd> Pause</p><button id="pause" class="quiet">Pause journey</button></section>
+      </aside>
+    </div>
+    <footer><span>INSPIRED BY EVERYDAY MOMENTS IN MYANMAR</span><p>A fictional place, made for slow exploration. Cultural details are a starting point for further research.</p><button id="restart" class="quiet">Start a new afternoon ↻</button></footer>
+    <div class="touch-controls" aria-label="Touch controls"><div class="dpad"><button data-key="arrowup" aria-label="Ride north">↑</button><button data-key="arrowleft" aria-label="Ride west">←</button><button data-key="arrowdown" aria-label="Ride south">↓</button><button data-key="arrowright" aria-label="Ride east">→</button></div><button id="touch-interact">Talk / collect</button></div>
+  </main>
+  <dialog id="conversation" aria-labelledby="speaker"><p class="eyebrow" id="dialog-kicker">AROUND TOWN</p><h2 id="speaker"></h2><p id="speech"></p><button id="close-dialog" class="primary">Keep exploring →</button></dialog>
+  <dialog id="map-dialog" aria-labelledby="map-title"><p class="eyebrow">A LITTLE HELP FINDING YOUR WAY</p><h2 id="map-title">Around the neighborhood</h2><canvas id="town-map" width="600" height="420" aria-label="Map of the town with your position and current objective"></canvas><p class="map-legend">● You &nbsp; ◆ Next stop &nbsp; · Paths connect all four neighborhoods.</p><button id="close-map" class="primary">Back to the ride →</button></dialog>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
